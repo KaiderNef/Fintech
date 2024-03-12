@@ -1,1 +1,1 @@
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "OpenAIkey";

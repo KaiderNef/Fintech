@@ -1,7 +1,9 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:managment/Screens/home.dart';
-
+import 'package:managment/Screens/signup_page.dart';
+import 'package:managment/widgets/bottomnavigationbar.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -101,19 +103,19 @@ class _LoginPageState extends State<LoginPage> {
       });
     }
 
-    if (_firstNameError.isEmpty &&
-        _lastNameError.isEmpty &&
-        _usernameError.isEmpty &&
-        _phoneNumberError.isEmpty &&
+    // if (_firstNameError.isEmpty &&
+    //     _lastNameError.isEmpty &&
+    //     _usernameError.isEmpty &&
+    //     _phoneNumberError.isEmpty &&
+    if (
         _emailError.isEmpty &&
         _passwordError.isEmpty) {
       // After successful login, navigate to the HomePage
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const Home()),
+        MaterialPageRoute(builder: (_) => const Bottom()),
       );
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,9 +133,9 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Lottie.asset(
-                    'assets/animation_lml0c7oz.json', // Replace with your animation file path
-                    width: 200,
-                    height: 200,
+                    'images/animation_lml0c7oz.json', // Replace with your animation file path
+                    width: 100,
+                    height: 100,
                     repeat: true, // Set to true if you want the animation to loop
                   ),
                   TextFormField(
@@ -159,6 +161,21 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: _login,
                     child: const Text('Login'),
                   ),
+                   const SizedBox(height: 16.0), // Added spacing
+                Text(
+                  'Wanna sign Up',
+                  style: TextStyle(
+                    color: Colors.blue,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                     Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const SignUpPage()),
+      );
+                  },
+                  child: const Text('Sign Up'),
+                ),
                 ],
               ),
             ),

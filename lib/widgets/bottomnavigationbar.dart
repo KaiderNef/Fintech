@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:managment/Screens/Wallet.dart';
 import 'package:managment/Screens/add.dart';
 import 'package:managment/Screens/chatPage.dart';
 import 'package:managment/Screens/home.dart';
@@ -13,19 +14,23 @@ class Bottom extends StatefulWidget {
 
 class _BottomState extends State<Bottom> {
   int index_color = 0;
-  List Screen = [Home(), Statistics(), Home(), chatPage()];
+  List Screen = [Home(), Statistics(), Wallet(), chatPage()];
+
   @override
   Widget build(BuildContext context) {
+    bool showAddButton = index_color != 3; // Show the "Add" button for screens other than chatPage
+
     return Scaffold(
       body: Screen[index_color],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => Add_Screen()));
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Color(0xff368983),
-      ),
+      floatingActionButton: showAddButton
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Add_Screen()));
+              },
+              child: Icon(Icons.add),
+              backgroundColor: Color(0xff368983),
+            )
+          : null, // Set to null to hide the button
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),

@@ -17,7 +17,7 @@ class _chatPageState extends State<chatPage> {
 
   final openAi = OpenAI.instance.build(
     token: OPENAI_API_KEY, baseOption: HttpSetup(
-      receiveTimeout: const Duration(seconds: 10,),
+      receiveTimeout: const Duration(seconds: 60,),
 
     ),
     enableLog: true,
@@ -38,11 +38,18 @@ class _chatPageState extends State<chatPage> {
   List<ChatUser> typingUser = <ChatUser>[];
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      backgroundColor: const Color.fromRGBO(0, 166, 126, 1),
-
-    ) ,
+ Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      backgroundColor: Color.fromARGB(189, 63, 225, 152),
+      title: Text(
+        'Ai chat', // Replace with your desired title
+        style: TextStyle(
+          color: Colors.blue,
+          fontSize: 20,
+        ),
+      ),
+    ),
     body: DashChat(
         currentUser: user,
         typingUsers: typingUser,
@@ -74,7 +81,7 @@ class _chatPageState extends State<chatPage> {
         return Messages(role:Role.assistant, content: m.text);
       }
     }).toList();
-    final request = ChatCompleteText(model: GptTurbo0301ChatModel(), messages: messagesHistory, maxToken: 500,);
+    final request = ChatCompleteText(model: GptTurbo0301ChatModel(), messages: messagesHistory, maxToken: 1000,);
     final respone = await openAi.onChatCompletion(request: request);
     for (var element in respone!.choices )
     {

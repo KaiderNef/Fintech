@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:managment/Screens/home.dart';
 import 'package:managment/Screens/login_page.dart';
-
+import 'package:managment/widgets/bottomnavigationbar.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -20,16 +19,16 @@ class SignUpPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Inside SignUpPage build method
+              // Inside SignUpPage build methodlib\assets\animation_lmjs40ql.json
               Lottie.asset(
-                'assets/animation_lml0j212.json', // Replace with your animation file path
+                'images/animation_lmjs40ql.json', // Replace with your animation file path
                 width: 200,
                 height: 200,
                 repeat: true, // Set to true if you want the animation to loop
               ),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Tên',
+                  labelText: 'First Name',
                   icon: Icon(Icons.person),
                 ),
                 keyboardType: TextInputType.text,
@@ -37,7 +36,7 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Họ',
+                  labelText: 'Last Name',
                   icon: Icon(Icons.person),
                 ),
                 keyboardType: TextInputType.text,
@@ -45,7 +44,7 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Tên đăng nhập',
+                  labelText: 'User Name',
                   icon: Icon(Icons.account_circle),
                 ),
                 keyboardType: TextInputType.text,
@@ -53,7 +52,7 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Số điện thoại',
+                  labelText: 'Phone Number',
                   icon: Icon(Icons.phone),
                 ),
                 keyboardType: TextInputType.phone,
@@ -69,7 +68,7 @@ class SignUpPage extends StatelessWidget {
               const SizedBox(height: 16.0),
               TextFormField(
                 decoration: const InputDecoration(
-                  labelText: 'Mật khẩu',
+                  labelText: 'Password',
                   icon: Icon(Icons.lock),
                 ),
                 obscureText: true,
@@ -89,7 +88,7 @@ class SignUpPage extends StatelessWidget {
 
                   // After successful signup, navigate to the login page
                   Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (_) => const Home()),
+                    MaterialPageRoute(builder: (_) => const Bottom()),
                   );
                 },
                 child: const Text('Sign Up'),

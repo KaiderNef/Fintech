@@ -17,12 +17,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Slide(
       title: "Welcome to Fintech",
       widgetTitle: LottieBuilder.asset(
-        'assets/animation_lmjtdifi.json',
+        'images/animation_lmjtdifi.json',
         width: 400,
         height: 300,
       ),
       description:
-      "App fintech trên điện thoại.\n\nDễ dàng kiểm soát chi tiêu của bạn, giúp bạn đạt được mục tiêu tài chính của mình",
+      "Fintech On your mobile.\n\nKnow your expense, track where's your money went ",
       backgroundColor: Colors.white, // White background
       styleTitle: const TextStyle(
         color: Colors.blue, // Blue text color
@@ -36,14 +36,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     ),
     Slide(
-      title: "Dễ dàng sử dụng",
+      title: "Friendly Environment",
       widgetTitle: LottieBuilder.asset(
-        'assets/NQpSWZfdkg.json',
+        'images/NQpSWZfdkg.json',
         width: 400,
         height: 280,
       ),
       description:
-      "Dễ dàng theo dõi chi tiêu hàng ngày, tuần, hoặc tháng.\n\nChia ra thành nhiều khoản chi tiêu khác nhau.",
+      "Easily track daily, weekly, or monthly expenses..\n\nBreak it down into various spending categories.",
       backgroundColor: Colors.blue, // Blue background
       styleDescription: const TextStyle(
         color: Colors.white, // White text color
@@ -56,14 +56,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     ),
     Slide(
-      title: "Ai hỗ trợ",
+      title: "Ai Chat",
       widgetTitle: LottieBuilder.asset(
-        'assets/animation_lmjtperk.json',
+        'images/animation_lmjtperk.json',
         width: 400,
         height: 300,
       ),
       description:
-      "Dễ dàng hơn với AI chat bot, giúp bạn nhiều hơn nữa",
+      "Even easier with an AI chatbot, it helps you even more",
       backgroundColor: Colors.white, // White background
       styleDescription: const TextStyle(
         color: Colors.blue, // White text color
@@ -84,7 +84,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   void initState() {
     super.initState();
     // Automatically transition to the next slide every 2 seconds
-    Timer.periodic(const Duration(seconds: 2), (Timer timer) {
+    Timer.periodic(const Duration(seconds: 5), (Timer timer) {
       if (currentIndex < slides.length - 1) {
         currentIndex++;
         _pageController.animateToPage(

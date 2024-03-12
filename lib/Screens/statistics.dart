@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:managment/data/model/add_date.dart';
 import 'package:managment/data/utlity.dart';
 import 'package:managment/widgets/chart.dart';
-
-import '../data/model/add_date.dart';
 
 class Statistics extends StatefulWidget {
   const Statistics({Key? key}) : super(key: key);
@@ -11,11 +10,11 @@ class Statistics extends StatefulWidget {
   State<Statistics> createState() => _StatisticsState();
 }
 
-ValueNotifier kj = ValueNotifier(0);
+ValueNotifier<int> kj = ValueNotifier(0);
 
 class _StatisticsState extends State<Statistics> {
-  List day = ['Day', 'Week', 'Month', 'Year'];
-  List f = [today(), week(), month(), year()];
+  List<String> day = ['Day', 'Week', 'Month', 'Year'];
+  List<List<Add_data>> f = [today(), week(), month(), year()];
   List<Add_data> a = [];
   int index_color = 0;
 
@@ -23,9 +22,9 @@ class _StatisticsState extends State<Statistics> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ValueListenableBuilder(
+        child: ValueListenableBuilder<int>(
           valueListenable: kj,
-          builder: (BuildContext context, dynamic value, Widget? child) {
+          builder: (BuildContext context, int value, Widget? child) {
             a = f[value];
             return custom();
           },
@@ -93,9 +92,7 @@ class _StatisticsState extends State<Statistics> {
                 ),
               ),
               SizedBox(height: 20),
-              Chart(
-                indexx: index_color,
-              ),
+              Chart(indexx: index_color),
               SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -105,9 +102,10 @@ class _StatisticsState extends State<Statistics> {
                     Text(
                       'Top Spending',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Icon(
                       Icons.swap_vert,
@@ -121,38 +119,39 @@ class _StatisticsState extends State<Statistics> {
           ),
         ),
         SliverList(
-            delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            return ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(5),
-                child: Image.asset('images/${a[index].name}.png', height: 40),
-              ),
-              title: Text(
-                a[index].name,
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return ListTile(
+                leading: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: Image.asset('images/${a[index].name}.png', height: 40),
                 ),
-              ),
-              subtitle: Text(
-                ' ${a[index].datetime.year}-${a[index].datetime.day}-${a[index].datetime.month}',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
+                title: Text(
+                  a[index].name,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-              trailing: Text(
-                a[index].amount,
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 19,
-                  color: a[index].IN == 'Income' ? Colors.green : Colors.red,
+                subtitle: Text(
+                  '${a[index].datetime.year}-${a[index].datetime.month.toString().padLeft(2, '0')}-${a[index].datetime.day.toString().padLeft(2, '0')}',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            );
-          },
-          childCount: a.length,
-        ))
+                trailing: Text(
+                  a[index].amount,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 19,
+                    color: a[index].IN == 'Income' ? Colors.green : Colors.red,
+                  ),
+                ),
+              );
+            },
+            childCount: a.length,
+          ),
+        ),
       ],
     );
   }

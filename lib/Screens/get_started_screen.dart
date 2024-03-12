@@ -11,20 +11,20 @@ class GetStartedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Bắt đầu nào'),
+        title: const Text('Get Started'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             LottieBuilder.asset(
-              'assets/animation_lmjs40ql.json', // Replace with your Lottie animation file
+              'images/animation_lmjs40ql.json', // Replace with your Lottie animation file
               width: 200,
               height: 200,
             ),
             const SizedBox(height: 20),
             const Text(
-              'Bắt đầu với Fintech nào!',
+              'Start your journey with Fintech',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class GetStartedScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (_) => const SignUpPage()), // Replace `SignUpScreen` with the actual name of your signup screen
                 );
               },
-              child: const Text('Đăng ký'),
+              child: const Text('Sign Up'),
             ),
             const SizedBox(height: 10),
             TextButton(
@@ -48,7 +48,7 @@ class GetStartedScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (_) => const LoginPage()), // Replace `LoginPage` with the actual name of your login screen
                 );
               },
-              child: const Text('Đăng nhập'),
+              child: const Text('Login'),
             ),
           ],
         ),

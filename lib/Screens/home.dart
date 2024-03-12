@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:managment/Screens/signup_page.dart';
 import 'package:managment/data/model/add_date.dart';
 import 'package:managment/data/utlity.dart';
 
@@ -134,6 +135,11 @@ class _HomeState extends State<Home> {
                   Positioned(
                     top: 35,
                     left: 340,
+                    child: InkWell(
+                    onTap: () {
+                     Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (_) => const SignUpPage()));
+                    },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(7),
                       child: Container(
@@ -141,11 +147,12 @@ class _HomeState extends State<Home> {
                         width: 40,
                         color: Color.fromRGBO(250, 250, 250, 0.1),
                         child: Icon(
-                          Icons.notification_add_outlined,
+                          Icons.logout,
                           size: 30,
                           color: Colors.white,
                         ),
                       ),
+                    ),
                     ),
                   ),
                   Padding(
@@ -154,7 +161,7 @@ class _HomeState extends State<Home> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Good afternoon',
+                          'Welcome back',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
@@ -162,7 +169,7 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         Text(
-                          'Enjelin Morgeana',
+                          'Kiệt Nguyễn',
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,
@@ -224,7 +231,7 @@ class _HomeState extends State<Home> {
                   child: Row(
                     children: [
                       Text(
-                        '\$ ${total()}',
+                        '\VND ${total()}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 25,
@@ -294,7 +301,7 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '\$ ${income()}',
+                        '\VND ${income()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17,
@@ -302,7 +309,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Text(
-                        '\$ ${expenses()}',
+                        '\VND ${expenses()}',
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17,

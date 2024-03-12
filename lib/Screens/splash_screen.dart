@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigateToOnboarding() async {
-    await Future.delayed(const Duration(seconds: 3)); // Splash screen duration
+    await Future.delayed(const Duration(seconds: 5)); // Splash screen duration
 
     // Navigate to the onboarding screen
     Navigator.of(context).pushReplacement(
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             LottieBuilder.asset(
-              'assets/animation_lmkuwzy6.json', // Replace with your Lottie animation file
+              'images/animation_lmkuwzy6.json', // Replace with your Lottie animation file
               width: 200,
               height: 200,
             ),
